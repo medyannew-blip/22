@@ -25,21 +25,64 @@ jobs:
           distribution: temurin
           java-version: "17"
       - uses: gradle/actions/setup-gradle@v4
+
       - name: Build release APK
         run: ./gradlew --no-daemon assembleRelease
+
       - name: Unit tests
+        id: tests
+        continue-on-error: true
         run: ./gradlew --no-daemon testDebugUnitTest
+
+      - name: Test summary
+        if: always()
+        run: |
+          mkdir -p dist
+          python3 - <<'PY' > dist/test-summary.txt
+          import glob, xml.etree.ElementTree as ET
+          for f in sorted(glob.glob("app/build/test-results/testDebugUnitTest/*.xml")):
+              r = ET.parse(f).getroot()
+              print(f"{r.get('name')}: tests={r.get('tests')} failures={r.get('failures')} errors={r.get('errors')} skipped={r.get('skipped')}")
+              for tc in r.iter("testcase"):
+                  for bad in list(tc.findall("failure")) + list(tc.findall("error")):
+                      print("  FAIL", tc.get("name"), (bad.text or bad.get("message") or "")[:1500])
+          PY
+          cat dist/test-summary.txt
+          cat dist/test-summary.txt >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Copy APK
+        run: cp app/build/outputs/apk/release/app-release.apk dist/Tasker.apk
+
       - uses: actions/upload-artifact@v4
         with:
           name: Tasker-apk
-          path: app/build/outputs/apk/release/*.apk
-      - name: Commit APK to branch
+          path: dist/Tasker.apk
+
+      - name: Enable KVM
         run: |
-          mkdir -p dist
-          cp app/build/outputs/apk/release/app-release.apk dist/Tasker.apk
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Emulator smoke test (release APK)
+        id: smoke
+        continue-on-error: true
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
+          script: ./scripts/emulator-smoke.sh
+
+      - name: Commit APK and reports to branch
+        if: always()
+        run: |
+          echo "tests=${{ steps.tests.outcome }} smoke=${{ steps.smoke.outcome }}" > dist/status.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dist/Tasker.apk
+          git add dist
           git commit -m "Build Tasker.apk from ${GITHUB_SHA::7} [skip ci]" || exit 0
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"

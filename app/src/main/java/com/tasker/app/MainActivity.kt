@@ -38,6 +38,13 @@ class MainActivity : AppCompatActivity() {
     private fun handleIntent(intent: Intent?) {
         intent ?: return
         intent.getStringExtra(EXTRA_TASK)?.let { vm.openFromNotification(it, intent.getBooleanExtra(EXTRA_RESCHEDULE, false)) }
+        // Deep links used by automation: --es route kanban --es theme midnight --ez rtl true
+        intent.getStringExtra(EXTRA_ROUTE)?.let { vm.navigateRoot(com.tasker.app.ui.Route.fromKey(it)) }
+        intent.getStringExtra(EXTRA_THEME)?.let { id -> vm.updateSettings { it.copy(themeId = id, followSystem = false) } }
+        if (intent.hasExtra(EXTRA_RTL)) {
+            val rtl = intent.getBooleanExtra(EXTRA_RTL, false)
+            vm.updateSettings { it.copy(forceRtl = rtl) }
+        }
         when (intent.action) {
             ACTION_ADD -> vm.showQuickAdd("")
             Intent.ACTION_SEND -> intent.getStringExtra(Intent.EXTRA_TEXT)?.let { vm.showQuickAdd(it) }
@@ -48,5 +55,8 @@ class MainActivity : AppCompatActivity() {
         const val EXTRA_TASK = "open_task"
         const val EXTRA_RESCHEDULE = "reschedule"
         const val ACTION_ADD = "com.tasker.app.ADD_TASK"
+        const val EXTRA_ROUTE = "route"
+        const val EXTRA_THEME = "theme"
+        const val EXTRA_RTL = "rtl"
     }
 }

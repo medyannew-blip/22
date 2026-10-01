@@ -65,6 +65,13 @@ sealed interface Route {
             "kanban" -> Kanban
             "eisenhower" -> Eisenhower
             "gtd" -> Gtd
+            "all" -> All
+            "logbook" -> Logbook
+            "search" -> Search
+            "settings" -> Settings
+            "sync" -> SyncSettings
+            "theme" -> ThemeEditor
+            "manage" -> Manage
             else -> Today
         }
     }
