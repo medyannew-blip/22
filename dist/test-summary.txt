@@ -2,19 +2,4 @@ com.tasker.app.ParserTest: tests=6 failures=0 errors=0 skipped=0
 com.tasker.app.RecTest: tests=1 failures=0 errors=0 skipped=0
 com.tasker.app.RepositoryTest: tests=3 failures=0 errors=0 skipped=0
 com.tasker.app.ScreensSmokeTest: tests=1 failures=0 errors=0 skipped=0
-com.tasker.app.TabletSmokeTest: tests=1 failures=1 errors=0 skipped=0
-  FAIL tabletLayoutRenders androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 15000 ms
-	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:441)
-	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:306)
-	at com.tasker.app.TabletSmokeTest.tabletLayoutRenders(ScreensSmokeTest.kt:81)
-	at java.base@17.0.20.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base@17.0.20.1/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base@17.0.20.1/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base@17.0.20.1/java.lang.reflect.Method.invoke(Method.java:569)
-	at app//org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at app//org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at app//org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at app//org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at app//org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:54)
-	at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invoke(AndroidComposeTestRule.android.kt:272)
-	at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invoke(AndroidComposeTestRule.android.kt:271)
+com.tasker.app.TabletSmokeTest: tests=1 failures=0 errors=0 skipped=0

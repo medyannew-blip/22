@@ -1,8 +1,9 @@
-10-01 22:28:26.805   523   596 V SplashScreenExceptionList: SplashScreen checking exception for package com.tasker.app (target sdk:35) -> false
-10-01 22:28:27.607  3353  3353 E com.tasker.app: Not starting debugger since process cannot load the jdwp agent.
-10-01 22:28:29.861   523  1733 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
-10-01 22:28:30.862   523   928 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
-10-01 22:28:30.919   523   928 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
-10-01 22:30:18.940   523   926 W WindowManager: Exception thrown during dispatchAppVisibility Window{20333d6 u0 com.tasker.app/com.tasker.app.MainActivity EXITING}
-10-01 22:30:18.981   523  1985 V SplashScreenExceptionList: SplashScreen checking exception for package com.tasker.app (target sdk:35) -> false
-10-01 22:30:19.193  6247  6247 E com.tasker.app: Not starting debugger since process cannot load the jdwp agent.
+10-01 22:37:24.742   522  2635 V SplashScreenExceptionList: SplashScreen checking exception for package com.tasker.app (target sdk:35) -> false
+10-01 22:37:25.390  3428  3428 E com.tasker.app: Not starting debugger since process cannot load the jdwp agent.
+10-01 22:37:27.583   522  2635 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:37:28.479   522  2982 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:37:28.491   522  2773 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:39:03.398  3428  3428 E FrameTracker: force finish cuj, time out: J<IME_INSETS_ANIMATION::1@1@com.tasker.app>
+10-01 22:39:13.953   522  2662 W WindowManager: Exception thrown during dispatchAppVisibility Window{283da10 u0 com.tasker.app/com.tasker.app.MainActivity EXITING}
+10-01 22:39:15.212   522  3033 V SplashScreenExceptionList: SplashScreen checking exception for package com.tasker.app (target sdk:35) -> false
+10-01 22:39:15.278  6121  6121 E com.tasker.app: Not starting debugger since process cannot load the jdwp agent.

@@ -1,1 +1,1 @@
-tests=failure smoke=success
+tests=success smoke=success
