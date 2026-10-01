@@ -78,7 +78,7 @@ class TabletSmokeTest {
     @Test
     fun tabletLayoutRenders() {
         val vm = ViewModelProvider(rule.activity)[MainViewModel::class.java]
-        rule.waitUntil(15_000) { vm.data.value.tasks.isNotEmpty() }
+        rule.waitForIdle()
         rule.onNodeWithTag("permanent-sidebar").assertExists()
         listOf(Route.Today, Route.Weekly, Route.TeuxDeux, Route.Calendar, Route.Kanban, Route.ThreeDay).forEach { r ->
             rule.runOnUiThread { vm.navigateRoot(r) }

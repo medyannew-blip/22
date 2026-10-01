@@ -66,6 +66,12 @@ sleep 4
 open_route today "" -tablet
 open_route calendar "" -tablet
 open_route kanban "" -tablet
+adb shell wm size 720x1560
+adb shell wm density 320
+sleep 3
+adb shell wm size 1600x1000
+adb shell wm density 240
+open_route weekly "" -tablet-resized
 adb shell wm size reset
 adb shell wm density reset
 
