@@ -315,7 +315,7 @@ fun WeeklyScreen(vm: MainViewModel, s: Settings, data: AppData, dnd: DragDropSta
                     val state = rememberLazyListState()
                     DropHighlight(dnd.hoverKey == key, Modifier.weight(1f).fillMaxHeight()) {
                         LazyColumn(Modifier.fillMaxSize().dropTarget(dnd, key).dragAutoScroll(dnd, state), state = state, contentPadding = ListPadding) {
-                            item { WeekDayHeader(d, list.count { !it.done }) { vm.showQuickAdd("", Task(date = d, gtd = Gtd.NEXT)) } }
+                            item { WeekColumnHeader(d, list.count { !it.done }) { vm.showQuickAdd("", Task(date = d, gtd = Gtd.NEXT)) } }
                             items(list, key = { it.id }) { t ->
                                 TaskRow(t, data, { vm.toggleDone(t) }, Modifier.draggableTask(dnd, t, key) { vm.openTask(t.id) }, showDate = false, dense = true)
                             }
@@ -347,6 +347,37 @@ fun WeeklyScreen(vm: MainViewModel, s: Settings, data: AppData, dnd: DragDropSta
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun WeekColumnHeader(day: Long, count: Int, onAdd: () -> Unit) {
+    val d = day.toDate()
+    val isToday = d == today()
+    Column(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).clickable(onClick = onAdd).padding(vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            d.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault()).uppercase(Locale.getDefault()),
+            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = 1.sp),
+            color = if (isToday) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
+        )
+        Text(
+            "${d.dayOfMonth}",
+            style = MaterialTheme.typography.headlineSmall,
+            color = if (isToday) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
+        )
+        Text(
+            if (count > 0) "$count" else "+",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.outline,
+        )
+        HorizontalDivider(
+            Modifier.padding(top = 6.dp, start = 8.dp, end = 8.dp),
+            thickness = 2.dp,
+            color = if (isToday) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant,
+        )
     }
 }
 
