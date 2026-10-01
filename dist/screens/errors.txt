@@ -1,5 +1,8 @@
-10-01 22:18:09.896   525  1877 V SplashScreenExceptionList: SplashScreen checking exception for package com.tasker.app (target sdk:35) -> false
-10-01 22:18:09.964  2630  2630 E com.tasker.app: Not starting debugger since process cannot load the jdwp agent.
-10-01 22:18:12.001   525  2213 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
-10-01 22:18:14.530   525   601 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
-10-01 22:18:14.781   525  1989 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:28:26.805   523   596 V SplashScreenExceptionList: SplashScreen checking exception for package com.tasker.app (target sdk:35) -> false
+10-01 22:28:27.607  3353  3353 E com.tasker.app: Not starting debugger since process cannot load the jdwp agent.
+10-01 22:28:29.861   523  1733 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:28:30.862   523   928 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:28:30.919   523   928 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:30:18.940   523   926 W WindowManager: Exception thrown during dispatchAppVisibility Window{20333d6 u0 com.tasker.app/com.tasker.app.MainActivity EXITING}
+10-01 22:30:18.981   523  1985 V SplashScreenExceptionList: SplashScreen checking exception for package com.tasker.app (target sdk:35) -> false
+10-01 22:30:19.193  6247  6247 E com.tasker.app: Not starting debugger since process cannot load the jdwp agent.
