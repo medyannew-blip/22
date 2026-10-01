@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="add_task"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add"
+        android:shortcutShortLabel="@string/add_task">
+        <intent
+            android:action="com.tasker.app.ADD_TASK"
+            android:targetPackage="com.tasker.app"
+            android:targetClass="com.tasker.app.MainActivity" />
+    </shortcut>
+</shortcuts>
