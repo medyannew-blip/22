@@ -1,0 +1,5 @@
+com.tasker.app.ParserTest: tests=6 failures=0 errors=0 skipped=0
+com.tasker.app.RecTest: tests=1 failures=0 errors=0 skipped=0
+com.tasker.app.RepositoryTest: tests=3 failures=0 errors=0 skipped=0
+com.tasker.app.ScreensSmokeTest: tests=1 failures=0 errors=0 skipped=0
+com.tasker.app.TabletSmokeTest: tests=1 failures=0 errors=0 skipped=0

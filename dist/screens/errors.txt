@@ -1,0 +1,5 @@
+10-01 22:18:09.896   525  1877 V SplashScreenExceptionList: SplashScreen checking exception for package com.tasker.app (target sdk:35) -> false
+10-01 22:18:09.964  2630  2630 E com.tasker.app: Not starting debugger since process cannot load the jdwp agent.
+10-01 22:18:12.001   525  2213 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:18:14.530   525   601 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
+10-01 22:18:14.781   525  1989 E JobScheduler.JobStatus: App com.tasker.app became active but still in NEVER bucket
