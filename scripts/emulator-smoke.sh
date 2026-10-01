@@ -31,6 +31,13 @@ shot 00-launch
 for r in today inbox all daily three weekly teuxdeux calendar kanban eisenhower gtd logbook settings sync theme manage; do
   open_route "$r"
 done
+# Real drag & drop gestures (long-press then move)
+open_route eisenhower "" -before-drag
+adb shell input draganddrop 180 1000 180 520 2500
+shot eisenhower-after-drag
+open_route today "" -before-drag
+adb shell input draganddrop 300 900 300 570 2500
+shot today-after-drag
 # Natural-language quick add preview
 adb shell am start -W -a android.intent.action.SEND -t text/plain \
   --es android.intent.extra.TEXT "'Call Anna tomorrow 5pm #home +Work !1 * remind me 30m before'" -n $PKG/.MainActivity > /dev/null
@@ -49,8 +56,13 @@ adb shell input swipe 5 800 600 800 300
 shot sidebar
 
 # Tablet layout (landscape, ~1066dp wide): permanent sidebar
+adb shell input keyevent KEYCODE_BACK
+adb shell am force-stop $PKG
 adb shell wm size 1600x1000
 adb shell wm density 240
+sleep 2
+adb shell am start -W -n $PKG/.MainActivity > /dev/null
+sleep 4
 open_route today "" -tablet
 open_route calendar "" -tablet
 open_route kanban "" -tablet

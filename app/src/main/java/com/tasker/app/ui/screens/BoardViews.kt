@@ -195,7 +195,7 @@ fun EisenhowerScreen(vm: MainViewModel, data: AppData, dnd: DragDropState) {
                         Row(Modifier.padding(start = 12.dp, top = 10.dp, end = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                             Column(Modifier.weight(1f)) {
                                 Text(stringResource(title), style = MaterialTheme.typography.titleSmall, color = color, maxLines = 1)
-                                Text(stringResource(subtitles[qi]), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline, maxLines = 1)
+                                Text(stringResource(subtitles[qi]), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.outline, maxLines = 2)
                             }
                             Text("${list.size}", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.outline)
                             IconButton(onClick = { vm.showQuickAdd("", Task(important = flags.first, urgent = flags.second, gtd = Gtd.NEXT)) }, modifier = Modifier.size(36.dp)) {
@@ -247,6 +247,7 @@ fun GtdScreen(vm: MainViewModel, data: AppData, dnd: DragDropState) {
                 }
                 Tab(
                     selected = tab == i, onClick = { tab = i },
+                    unselectedContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = if (key.startsWith("gtd:")) Modifier.dropTarget(dnd, key)
                         .background(if (dnd.hoverKey == key) MaterialTheme.colorScheme.primary.copy(alpha = 0.15f) else Color.Transparent) else Modifier,
                     text = { Text(stringResource(label) + if (count > 0) " $count" else "", maxLines = 1) },

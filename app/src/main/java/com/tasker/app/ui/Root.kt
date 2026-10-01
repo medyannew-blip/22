@@ -92,6 +92,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -190,7 +191,7 @@ private fun AppShell(vm: MainViewModel, s: Settings) {
         }
         if (wide) {
             Row(Modifier.fillMaxSize()) {
-                Surface(color = MaterialTheme.colorScheme.surfaceContainerLow, modifier = Modifier.width(290.dp).fillMaxHeight()) {
+                Surface(color = MaterialTheme.colorScheme.surfaceContainerLow, modifier = Modifier.width(290.dp).fillMaxHeight().testTag("permanent-sidebar")) {
                     Sidebar(vm, data, onNavigate)
                 }
                 VerticalDivider(color = MaterialTheme.colorScheme.outlineVariant)

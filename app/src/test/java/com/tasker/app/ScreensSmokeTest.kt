@@ -1,6 +1,7 @@
 package com.tasker.app
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.lifecycle.ViewModelProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tasker.app.data.Status
@@ -31,6 +32,7 @@ class ScreensSmokeTest {
     @Test
     fun allScreensRender() {
         rule.waitUntil(15_000) { vm().data.value.tasks.size >= 5 }
+        rule.onNodeWithTag("permanent-sidebar").assertDoesNotExist()
         val routes = listOf(
             Route.Today, Route.Inbox, Route.All, Route.Daily, Route.ThreeDay, Route.Weekly, Route.TeuxDeux,
             Route.Calendar, Route.Kanban, Route.Eisenhower, Route.Gtd, Route.Logbook, Route.Search,
@@ -77,6 +79,7 @@ class TabletSmokeTest {
     fun tabletLayoutRenders() {
         val vm = ViewModelProvider(rule.activity)[MainViewModel::class.java]
         rule.waitUntil(15_000) { vm.data.value.tasks.isNotEmpty() }
+        rule.onNodeWithTag("permanent-sidebar").assertExists()
         listOf(Route.Today, Route.Weekly, Route.TeuxDeux, Route.Calendar, Route.Kanban, Route.ThreeDay).forEach { r ->
             rule.runOnUiThread { vm.navigateRoot(r) }
             rule.waitForIdle()

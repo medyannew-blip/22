@@ -140,6 +140,7 @@ fun TodayScreen(vm: MainViewModel, data: AppData, dnd: DragDropState) {
                             TaskRow(
                                 task, data, onToggle = { vm.toggleDone(task) },
                                 modifier = Modifier.weight(1f).draggableTask(dnd, task, key) { vm.openTask(task.id) },
+                                showDate = task.date != t,
                                 onStar = { vm.toggleTop3(task) },
                             )
                         }
